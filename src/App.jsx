@@ -1,9 +1,14 @@
-import './App.css';
+// import './App.css';
+import Header from "./Header.jsx"
+import Main from "./Main.jsx"
+import Footer from "./Footer.jsx"
 
 function App() {
   return (
-    <div>
-      <h1>Small Business Database</h1>
+    <div className='background'>
+      <Header/>
+      <Main/>
+      <Footer/>
     </div>
   );
 }
