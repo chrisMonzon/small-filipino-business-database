@@ -6,7 +6,14 @@ function Main() {
     return (
         <div>
             <SearchBarComponent/>
-            <CardComponent/>
+            <div className="cards">
+                <CardComponent/>
+                <CardComponent/>
+                <CardComponent/>
+                <CardComponent/>
+                <CardComponent/>
+                <CardComponent/>
+            </div>
             <Filter_Bar/>
         </div>
     );

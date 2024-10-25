@@ -1,0 +1,41 @@
+.FilterBar {
+    /* font-size: 3em;
+    font-family: Garamond, serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    background-color:  #254441;
+    height: 100%;
+    width: 300px; */
+
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: red;
+    overflow-x: hidden;
+    transition: 0.3s;
+    z-index: 999; /* Ensure it sits on top of content */
+    padding-top: 60px;
+}
+  
+  .FilterBar.open {
+    width: 250px;
+  }
+  
+  .FilterBar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .FilterBar li {
+    padding: 10px 15px;
+    text-align: left;
+    color: white;
+  }
+  
+  .FilterBar li:hover {
+    background-color: #575757;
+    cursor: pointer;
+  }
