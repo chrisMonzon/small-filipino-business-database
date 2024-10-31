@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.Filter_Bar {
+    flex: 1;              /* Adjust this to control the width */
+    margin-right: 20px;    /* Add spacing between the Filter_Bar and cards */
+}
+
+.cards {
+    flex: 3;              /* Makes the cards section wider than the filter bar */
+    display: flex;
+    flex-wrap: wrap;       /* Allows the cards to wrap to the next row if needed */
+    gap: 20px;             /* Adds spacing between individual cards */
+}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import './Filter_Bar.css'
 function Filter_Bar() {
     // return (
     //     <div className="">
@@ -7,15 +7,19 @@ function Filter_Bar() {
     //         <button type="radio"></button>
     //     </div>
     // );
-    const [isOpen, setIsOpen] = useState(false)
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-      };
+    // const [isOpen, setIsOpen] = useState(false)
+    // const toggleSidebar = () => {
+    //     setIsOpen(!isOpen);
+    //   };
     
       return (
-        <div>
-            <button type='checkbox'>Restaurant</button>
-            <button type='checkbox'>Arts</button>
+        <div className='filter'>
+            <input type="checkbox"></input>
+            <label for="vehicle1"> Restaurant</label>
+
+            {/* Do this for more types */}
+            {/* Clean up the filter bar */}
+            {/* Add functionality with JavaScript */}
         </div>
       );
 }
