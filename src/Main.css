@@ -5,7 +5,7 @@
 
 .Filter_Bar {
     flex: 1;              /* Adjust this to control the width */
-    margin-right: 20px;    /* Add spacing between the Filter_Bar and cards */
+    margin-right:20px;    /* Add spacing between the Filter_Bar and cards */
 }
 
 .cards {

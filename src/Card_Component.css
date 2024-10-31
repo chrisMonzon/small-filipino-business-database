@@ -8,40 +8,44 @@
     background-color: #85aba8;
 }
 
-.business_name {
+.card-business-name {
     font-size: 3em;
     font-family: Garamond, serif;
     color: #ffffff;
     margin: 5%;
 }
 
-.business_description, .business_rating {
+.card-business-description, .card-business-rating {
     font-family: Verdana, Tahoma, sans-serif;
     font-size: 1.25em;
     color: #ffffff;
     margin: 5%;
 }
 
-.card_image {
+.card-image {
     max-width: 50%;
     /* max-height: 50%; */
     height: auto;
 }
 
-.settings-button {
+.card-settings-button {
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 0;
+    float: right;
+    padding: 10;
   }
   
-  .dot {
+  .card-settings-button-dot {
     height: 8px;
     width: 8px;
     background-color: #333; /* Color of the dots */
     border-radius: 50%;
     margin: 2px 0; /* Space between dots */
+  }
+
+  .card-settings-menu {
+    display:none;
   }

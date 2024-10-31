@@ -1,4 +1,12 @@
 import './Header.css';
+import Filter_Bar from "./Filter_Bar.jsx";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Login from "./Login.jsx";
+
 
 function Header() {
     return (
@@ -7,7 +15,7 @@ function Header() {
         <header>
             <div className='head'>
             {/* replace with link to actual home page */}
-            <a href="https://www.google.com/"><img className='header_image' src="https://www.psauiuc.org/wp-content/uploads/2024/09/Logo-no-words-no-circle-300x300.png" alt="Philippine Student Association Logo"/></a>
+            <a href="https://www.youtube.com/@jdarmedilla"><img className='header_image' src="https://www.psauiuc.org/wp-content/uploads/2024/09/Logo-no-words-no-circle-300x300.png" alt="Philippine Student Association Logo"/></a>
                 <h1 className="site_name">
                     Small Filipino Business Database
                 </h1>

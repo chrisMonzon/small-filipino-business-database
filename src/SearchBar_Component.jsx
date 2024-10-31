@@ -11,4 +11,6 @@ function SearchBarComponent() {
 
 export default SearchBarComponent;
 
+
+
 // I "borrowed" this guy's code: https://www.youtube.com/watch?v=f6ocDCkCmhM
