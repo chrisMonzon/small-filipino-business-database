@@ -4,9 +4,13 @@ import SearchBarComponent from "./SearchBar_Component";
 import "./Main.css";
 
 function Main() {
+    let printSearchQuery = (query) => {
+        console.log("Query: ", query);
+    }
+
     return (
         <div>
-            <SearchBarComponent/>
+            <SearchBarComponent onSendSearchQuery={printSearchQuery}/>
             <div className="container">
                 <Filter_Bar />
                 <div className="cards">
