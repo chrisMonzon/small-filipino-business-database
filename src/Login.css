@@ -1,0 +1,19 @@
+.login-text {
+    color: white;
+    text-align: center;
+}
+.square {
+    background-color: #85aba8;
+    width: 25em;
+    height: 30em;
+    margin: auto;
+    border-radius: 10px;
+}
+.username {
+    color: white;
+    text-align: center;
+}
+.password {
+    color: white;
+    text-align: center;
+}
