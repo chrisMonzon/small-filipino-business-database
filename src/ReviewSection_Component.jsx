@@ -22,7 +22,7 @@
                         <h3>TITLE: Lorem ipsum dolor sit amet</h3>
                     </div>
                     <div>
-                        <h3 className="date_written">Date Written</h3>
+                        <h3 className="date_written">DATE WRITTEN</h3>
                         <h3 className="review_description">DESCRIPTION: Lorem ipsum dolor sit amet, 
                             consectetur adipiscing elit. Maecenas convallis sem in ex varius, eget 
                             lacinia turpis placerat. Nam elit ligula, sodales eu odio non, aliquet 
