@@ -1,6 +1,7 @@
 import CardComponent from "./Card_Component"
 import Filter_Bar from "./Filter_Bar";
 import SearchBarComponent from "./SearchBar_Component";
+import SortComponent from "./SortComponent";
 import "./Main.css";
 import React, { useState } from "react";
 
@@ -47,6 +48,13 @@ function Main() {
     return (
         <div>
             <SearchBarComponent onSendSearchQuery={printSearchQuery}/>
+            <div className="columnContainer">
+                <SearchBarComponent/>
+                <div className="container">
+                    <SortComponent /> 
+                </div>
+                
+            </div>
             <div className="container">
                 <Filter_Bar />
                 <div className="cards">
