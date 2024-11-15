@@ -49,7 +49,6 @@ function Main() {
         <div>
             <SearchBarComponent onSendSearchQuery={printSearchQuery}/>
             <div className="columnContainer">
-                <SearchBarComponent/>
                 <div className="container">
                     <SortComponent /> 
                 </div>
