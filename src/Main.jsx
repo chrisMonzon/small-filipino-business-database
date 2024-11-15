@@ -11,7 +11,6 @@ function Main() {
                 <SearchBarComponent/>
                 <div className="container">
                     <SortComponent /> 
-                    <SortComponent /> 
                 </div>
                 
             </div>

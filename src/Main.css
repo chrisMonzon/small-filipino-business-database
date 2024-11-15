@@ -21,7 +21,14 @@
 }
 
 .SortComponent{
-    font-size: 0.65vw;
+    font-size: 0.15vw;
     font-family: Garamond, serif;
-    color: #ffffff;
+    color: #ffff;
+    text-align:center;
+}
+
+.sorting{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
