@@ -1,7 +1,8 @@
+import './Footer.css';
 function Footer() {
     return(
         <footer>
-            <p>© 2024 Small Business Database</p>
+            <p className="footer">© 2024 Small Business Database</p>
         </footer>
     );
 }
