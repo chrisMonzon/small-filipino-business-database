@@ -23,7 +23,6 @@ function App() {
       
       {/* Footer always shown */}
       <Footer />
-      <Login/>
     </div>
     </Router>
   );
