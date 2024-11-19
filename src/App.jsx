@@ -7,12 +7,25 @@ import Login from "./Login.jsx";
 
 function App() {
   return (
+    <Router>
     <div className="background">
+      {/* Header always shown */}
       <Header />
-      <Main />
+
+      <Routes>
+        {/* Home page */}
+        <Route path="/" element={<Main/>} />
+
+        {/* Log in page */}
+        <Route path="/login" element={<Login/>}/>
+
+      </Routes>
+      
+      {/* Footer always shown */}
       <Footer />
       <Login/>
     </div>
+    </Router>
   );
 }
 

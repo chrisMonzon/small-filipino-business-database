@@ -1,6 +1,6 @@
 import "./Card_Component.css";
 
-function CardComponent() {
+function CardComponent( {buisnessName, rating, description} ) {
     return (
         <button className="card" type="button" onclick="document.getElementById('card-settings-menu').style.display='block'">
             <div>
@@ -29,17 +29,17 @@ function CardComponent() {
                 </script>
                 <div>
                     <h1 className="card-business-name">
-                        Business Name
+                        {buisnessName}
                     </h1>
                 </div>
                 <div>
                     <p className="card-business-rating">
-                        Rating of Business
+                        Rating: {rating}
                     </p>
                 </div>
                 <div>
                     <p className="card-business-description">
-                        Description of Business
+                        {description}
                     </p>
                 </div>
             </div>
