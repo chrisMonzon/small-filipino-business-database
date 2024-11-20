@@ -1,3 +1,4 @@
+import BusinessPageComponent from "./BusinessPage_Component";
 import CardComponent from "./Card_Component"
 import Filter_Bar from "./Filter_Bar";
 import SearchBarComponent from "./SearchBar_Component";
