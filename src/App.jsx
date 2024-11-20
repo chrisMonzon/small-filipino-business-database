@@ -4,6 +4,7 @@ import Main from "./Main.jsx"
 import Footer from "./Footer.jsx"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login.jsx";
+import BusinessPageComponent from "./BusinessPage_Component.jsx";
 
 function App() {
   return (
@@ -19,10 +20,12 @@ function App() {
         {/* Log in page */}
         <Route path="/login" element={<Login/>}/>
 
+        <Route path="/business" element={<BusinessPageComponent/>}/>
+
       </Routes>
       
       {/* Footer always shown */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
     </Router>
   );
