@@ -25,7 +25,7 @@ function App() {
       </Routes>
       
       {/* Footer always shown */}
-      {/* <Footer /> */}
+      <Footer/>
     </div>
     </Router>
   );
