@@ -1,23 +1,4 @@
-<<<<<<< HEAD
-function SignUp() {
-    return (
-        <div>
-            <h1> Sign Up </h1>
 
-            <div>
-                <label>
-                Username:
-                <input type="username" placeholder="Username"/>
-                </label>
-            </div>
-            <input type="password" placeholder="Password"/>
-            <input type="confirmation" placeholder="Confirm Password"/>
-            <input type="email" placeholder="Email"/>
-        </div>
-    );
-}
-
-=======
 import './SignUp.css';
 
 function SignUp() {
@@ -57,5 +38,4 @@ function SignUp() {
     );
 }
 
->>>>>>> b81d6c17a139db0f5ce04c4b1ea768e0d1b3a9a5
 export default SignUp;

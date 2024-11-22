@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-function Login() {
-  return (
-    <div>
-      <h1>Login</h1>
-    </div>
-  );
-}
-
-export default Login;
-=======
 import './Login.css'
 function Login() {
   return (
@@ -35,5 +24,3 @@ function Login() {
 }
 
 export default Login;
-
->>>>>>> b81d6c17a139db0f5ce04c4b1ea768e0d1b3a9a5
