@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import './App.css';
 import Header from "./Header.jsx"
 import Main from "./Main.jsx"
@@ -16,7 +15,6 @@ function App() {
 }
 
 export default App;
-=======
 // import './App.css';
 import Header from "./Header.jsx"
 import Main from "./Main.jsx"
@@ -54,4 +52,3 @@ function App() {
 }
 
 export default App;
->>>>>>> b81d6c17a139db0f5ce04c4b1ea768e0d1b3a9a5

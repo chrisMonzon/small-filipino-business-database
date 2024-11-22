@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .sorting{
     margin:auto;
     font-size: 1.5vw;
@@ -8,4 +9,20 @@
 
 .sorting sort_component{
     padding-left: 3cm;
+=======
+.sorting{
+    margin:auto;
+    font-size: 1.5vw;
+    font-family: Garamond, serif;
+    color: #ffffff;
+    padding-top: 0.25cm;
+}
+
+.sorting sort_component{
+    padding-left: 3cm;
+}
+
+.sorting_criteria:hover {
+    cursor: pointer;
+>>>>>>> 5a67d7833e2e9454ce31f8ba53aad8f1d53da66f
 }
