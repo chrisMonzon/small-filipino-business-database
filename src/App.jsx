@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login.jsx";
 import BusinessPageComponent from "./BusinessPage_Component.jsx";
 import SignUp from "./SignUp.jsx";
+import BusinessList from "./testcomp.jsx";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         {/* Log in page */}
         <Route path="/login" element={<Login/>}/>
 
-        <Route path="/business" element={<BusinessPageComponent/>}/>
+        <Route path="/business" element={<BusinessList/>}/>
 
         <Route path="/signup" element={<SignUp/>}/>
 
