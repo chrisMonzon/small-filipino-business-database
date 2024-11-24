@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login.jsx";
 import BusinessPageComponent from "./BusinessPage_Component.jsx";
 import SignUp from "./SignUp.jsx";
+import BusinessList from "./BusinessList.jsx";
 
 function App() {
   return (

@@ -1,0 +1,17 @@
+import csv
+from business.models import Business
+
+def load_business_data():
+    file_path = 'business/business_data.csv'  # Adjust path as needed
+    with open(file_path, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            Business.objects.create(
+                business_id=row['business_id'],
+                business_name=row['business_name'],
+                type=row['type'],
+                description=row['description'],
+                social_media=row['social_media'],
+                email=row['email'],
+            )
+    print("Data imported successfully!")
