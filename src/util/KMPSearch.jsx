@@ -1,4 +1,5 @@
 class KMPSearch {
+    // Search frequency of pattern within a given string, returns the frequency of pattern
     static kmpSearch(pattern, toSearch) {
         if (pattern === "" || toSearch === "") return 0; 
 
@@ -9,7 +10,7 @@ class KMPSearch {
 
         // piTable search index
         let j = 0;
-
+        // toSearch search index
         let i = 0
 
         while ((i < toSearchArray.length) ) {
@@ -17,10 +18,8 @@ class KMPSearch {
             let piTableChar = patternArray[j + 1];
 
             if (currentChar === piTableChar) {
-
                 j++;
                 i++;
-
                 if (j >= (piTable.length  - 1)) {
                     ret_val++;
                     j = 0;
@@ -32,10 +31,10 @@ class KMPSearch {
                 i++;
             } 
         }
-
         return ret_val;
     }
 
+    // Generate Pi table from string; A table that recognizes patterns within substrings (e.x abcabcba = [0,0,0,1,2,3,0,1])
     static kmpTable(pattern) {
         let table = new Array(pattern.length).fill(0);
         let i = 1;

@@ -60,8 +60,8 @@ function parseDatabase(database) {
 }
 
 function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) {
-    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.buisnessName);
-    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.buisnessName);
+    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.buissness_name);
+    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.buisness_name);
 
     if (firstTitleFrequency > secondTitleFrequency) {
         return -1;
