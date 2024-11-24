@@ -4,10 +4,11 @@ import Filter_Bar from "./Filter_Bar";
 import SearchBarComponent from "./SearchBar_Component";
 import SortComponent from "./SortComponent";
 import "./Main.css";
+import KMPSearch from "./util/KMPSearch"
 import React, { useState } from "react";
 
-let testDatabase = [
-        { buisnessName: "Bob's Burgers", rating: 4.5, description: "A burger joint that sells burgers with a unique twist." },
+let dummyDatabse = [
+    { buisnessName: "Bob's Burgers", rating: 4.5, description: "A burger joint that sells burgers with a unique twist." },
     { buisnessName: "Freddy Fazbear's Pizza", rating: 3.2, description: "A creepy pizza place with animatronic entertainment." },
     { buisnessName: "Chick-fil-a", rating: 4.8, description: "A fast food chain famous for their fried chicken sandwiches." },
     { buisnessName: "McDonald's", rating: 2.3, description: "An iconic fast food chain serving burgers, fries, and shakes." },
@@ -31,24 +32,23 @@ let testDatabase = [
 ] 
 
 
-
-
+// function Main({database}) // more efficient to send databse as a state 
 function Main() {
+    const testDatabase = dummyDatabse.slice();
     const [filteredData, setFilteredData] = useState(testDatabase);
 
-    function printSearchQuery(query) {
+    function filterBuisnessesFromQuery(query) {
         console.log("Query: ", query);
 
         let tempDatabase = testDatabase.slice();
         
         tempDatabase.sort((a, b) => compareBuisnessesFromQuery(query, a, b));
-        console.log("Sorted Database: ", tempDatabase);
         setFilteredData(tempDatabase);
     }
 
     return (
         <div>
-            <SearchBarComponent onSendSearchQuery={printSearchQuery}/>
+            <SearchBarComponent onSendSearchQuery={filterBuisnessesFromQuery}/>
             <div className="columnContainer">
                 <div className="container">
                     <SortComponent /> 
@@ -77,11 +77,9 @@ function parseDatabase(database) {
     return cards;
 }
 
-
-
 function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) {
-    let firstTitleFrequency = countFrequencyOfSubstring(searchQuery, firstBuisness.buisnessName);
-    let secondTitleFrequency = countFrequencyOfSubstring(searchQuery, secondBuisness.buisnessName);
+    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.buisnessName);
+    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.buisnessName);
 
     if (firstTitleFrequency > secondTitleFrequency) {
         return -1;
@@ -89,8 +87,8 @@ function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) 
         return 1;
     }
 
-    let firstDescFrequency = countFrequencyOfSubstring(searchQuery, firstBuisness.description);
-    let secondDescFrequency = countFrequencyOfSubstring(searchQuery, secondBuisness.description);
+    let firstDescFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.description);
+    let secondDescFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.description);
 
     if (firstDescFrequency > secondDescFrequency) {
         return -1;
@@ -109,23 +107,5 @@ function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) 
 
     return 0;
 }
-
-function countFrequencyOfSubstring(inputSubstring, toCount) {
-    inputSubstring = inputSubstring.trim().toLowerCase();
-    toCount = toCount.trim().toLowerCase();
-    let inputSubstringLen = inputSubstring.length;
-    let toCountLen = toCount.length;
-    let end = toCountLen - inputSubstringLen + 1;
-    if (end < 0) return 0;
-    let ret_val = 0
-
-    for (let i = 0 ; i < end; i++) {
-        let toCompare = toCount.substring(i, i + inputSubstringLen);
-        if (toCompare === inputSubstring) ret_val++;
-    }
-
-    return ret_val;
-}
-
 
 export default Main;
