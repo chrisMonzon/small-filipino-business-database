@@ -8,6 +8,57 @@
     background-color: #85aba8;
 }
 
+.card-business-name {
+    font-size: 3em;
+    font-family: Garamond, serif;
+    color: #ffffff;
+    margin: 5%;
+}
+
+.card-business-description, .card-business-rating {
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 1.25em;
+    color: #ffffff;
+    margin: 5%;
+}
+
+.card-image {
+    max-width: 50%;
+    /* max-height: 50%; */
+    height: auto;
+}
+
+.card-settings-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    padding: 10;
+  }
+  
+  .card-settings-button-dot {
+    height: 8px;
+    width: 8px;
+    background-color: #333; /* Color of the dots */
+    border-radius: 50%;
+    margin: 2px 0; /* Space between dots */
+  }
+
+  .card-settings-menu {
+    display:none;
+  }
+.card {
+    width: 30rem;
+    height: 30rem;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    background-color: #85aba8;
+}
+
 .card:hover {
     cursor: pointer;
 }
