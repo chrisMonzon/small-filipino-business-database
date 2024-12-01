@@ -5,6 +5,7 @@ import SortComponent from "./SortComponent";
 import CardComponent from "./Card_Component";
 import { fetchBusinesses } from "./business";
 import "./Main.css";
+import KMPSearch from "./util/KMPSearch"
 
 function Main() {
     const [filteredData, setFilteredData] = useState([]); // Dynamic data
@@ -25,7 +26,6 @@ function Main() {
         console.log("Query: ", query);
         let tempDatabase = allBusinesses.slice();
         tempDatabase.sort((a, b) => compareBuisnessesFromQuery(query, a, b));
-        console.log("Sorted Database: ", tempDatabase);
         setFilteredData(tempDatabase);
     }
 
@@ -59,10 +59,9 @@ function parseDatabase(database) {
     ));
 }
 
-// Compare Businesses for Sorting
 function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) {
-    let firstTitleFrequency = countFrequencyOfSubstring(searchQuery, firstBuisness.business_name);
-    let secondTitleFrequency = countFrequencyOfSubstring(searchQuery, secondBuisness.business_name);
+    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.buissness_name);
+    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.buisness_name);
 
     if (firstTitleFrequency > secondTitleFrequency) {
         return -1;
@@ -70,17 +69,10 @@ function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) 
         return 1;
     }
 
-    let firstDescFrequency = countFrequencyOfSubstring(searchQuery, firstBuisness.description);
-    let secondDescFrequency = countFrequencyOfSubstring(searchQuery, secondBuisness.description);
+    let firstDescFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.description);
+    let secondDescFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.description);
 
     return secondDescFrequency - firstDescFrequency;
-}
-
-// Helper Function to Count Frequency
-function countFrequencyOfSubstring(inputSubstring, toCount) {
-    inputSubstring = inputSubstring.trim().toLowerCase();
-    toCount = toCount.trim().toLowerCase();
-    return toCount.split(inputSubstring).length - 1;
 }
 
 export default Main;
