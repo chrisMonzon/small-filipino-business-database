@@ -1,7 +1,5 @@
 import './Header.css';
-import Filter_Bar from "./Filter_Bar.jsx";
 import React from 'react';
-import Login from "./Login.jsx";
 import { Link } from "react-router-dom";
 
 

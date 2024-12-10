@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Card_Component.css";
+import "../assets/Card_Component.css";
 
 function CardComponent( {buisnessName, rating, description} ) {
     return (

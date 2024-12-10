@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import SearchBarComponent from "./SearchBar_Component";
-import Filter_Bar from "./Filter_Bar";
-import SortComponent from "./SortComponent";
-import CardComponent from "./Card_Component";
-import { fetchBusinesses } from "./business";
-import "./Main.css";
-import KMPSearch from "./util/KMPSearch"
+import SearchBarComponent from "../features/searching/SearchBar_Component.jsx";
+import Filter_Bar from "../features/filtering/Filter_Bar.jsx";
+import SortComponent from "../features/sorting/SortComponent";
+import CardComponent from "../components/Card_Component";
+import { fetchBusinesses } from "../lib/business";
+import "../assets/Main.css";
+import KMPSearch from "../util/KMPSearch"
 
 function Main() {
     const [filteredData, setFilteredData] = useState([]); // Dynamic data

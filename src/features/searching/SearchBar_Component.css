@@ -1,0 +1,17 @@
+.searchbar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.searchbar input {
+    font-size: 1.25em;
+    font-family: Verdana, Tahoma, sans-serif;
+    padding-left: 15px;
+    height: 50px;
+    width: 550px;
+    border: 5px solid;
+    border-radius: 25px;
+    border-color: rgb(105, 57, 57);
+    background-color: #A44A3F;
+}
