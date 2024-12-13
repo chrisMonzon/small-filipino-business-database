@@ -3,8 +3,6 @@ import "../assets/BusinessPage_Component.css";
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { fetchBusinesses } from "../lib/business";
-// import Lightbox from 'react-image-lightbox';  // For image gallery lightbox
-// import 'react-image-lightbox/style.css';
 
 function BusinessPageComponent () {
 
@@ -131,21 +129,52 @@ function BusinessPageComponent () {
             onClick={() => handleImageClick(index)}
           />
         ))}
-        {/*{isOpen && (
-          <Lightbox
-            mainSrc={currentImage}
-            onCloseRequest={() => setIsOpen(false)}
-          />
-        )}*/}
+        
       </div>
 
       {/* Contact and Action Buttons */}
       <div className="contact-buttons">
-        <button onClick={() => window.location.href = `tel:${businessData.contact.phone}`}>Call</button>
-        <button onClick={() => window.location.href = `mailto:${businessData.contact.email}`}>Email</button>
-        <button onClick={() => window.open(businessData.contact.website)}>Website</button>
-        <button onClick={() => window.location.href = `sms:${businessData.contact.phone}`}>Message</button>
-      </div>
+        {/* Email Button */}
+        {businessData.email && (
+            <button onClick={() => window.location.href = `mailto:${businessData.email}`}>
+                Email
+            </button>
+        )}
+        
+        {/* Website Button */}
+        {businessData.website && (
+            <button onClick={() => window.open(businessData.website, '_blank')}>
+                Website
+            </button>
+        )}
+        
+        {/* Instagram Button */}
+        {businessData.instagram && (
+            <button onClick={() => {
+                const username = businessData.instagram.startsWith('@') 
+                    ? businessData.instagram.slice(1) // Remove '@' if present
+                    : businessData.instagram;
+                window.open(`https://instagram.com/${username}`, '_blank'); // Open in a new tab
+            }}>
+                Instagram
+            </button>
+        )}
+
+        {/* Call Button (Uncomment if needed) */}
+        {/* {businessData.contact?.phone && (
+            <button onClick={() => window.location.href = `tel:${businessData.contact.phone}`}>
+                Call
+            </button>
+        )} */}
+
+        {/* Message Button (Uncomment if needed) */}
+        {/* {businessData.contact?.phone && (
+            <button onClick={() => window.location.href = `sms:${businessData.contact.phone}`}>
+                Message
+            </button>
+        )} */}
+    </div>
+
       
       {/* Operating Hours */}
       <div className="operating-hours">
@@ -164,8 +193,8 @@ function BusinessPageComponent () {
 
       {/* Social Media Links */}
       <div className="social-media-links">
-        {/*<a href={businessData.socialLinks.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href={businessData.socialLinks.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>*/}
+        {/* <a href={businessData.socialLinks.facebook} target="_blank" rel="noopener noreferrer">Facebook</a> */}
+        {/* <a href={businessData.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> */}
       </div>
 
       {/* Reviews Section */}
