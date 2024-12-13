@@ -3,7 +3,7 @@ import "../assets/Card_Component.css";
 
 function CardComponent( {buisnessName, rating, description} ) {
     return (
-        <Link to="/business">
+        <Link to={`/business/${buisnessName}`}>
         <button className="card" type="button" onclick="document.getElementById('card-settings-menu').style.display='block'">
             <div>
                 <img className='card-image' src="https://www.psauiuc.org/wp-content/uploads/2024/09/Logo-no-words-no-circle-300x300.png" alt="Philippine Student Association Logo" style={{width: '100%'}}/>

@@ -1,10 +1,48 @@
 import "../assets/BusinessPage_Component.css";
 
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import { fetchBusinesses } from "../lib/business";
 // import Lightbox from 'react-image-lightbox';  // For image gallery lightbox
 // import 'react-image-lightbox/style.css';
 
-const BusinessPageComponent = () => {
+function BusinessPageComponent () {
+
+  // const [filteredData, setFilteredData] = useState([]); // Dynamic data
+  // const [allBusinesses, setAllBusinesses] = useState([]); // All fetched data
+  const { businessName } = useParams(); // Extract business name from URL
+  const [filteredData, setFilteredData] = useState([]); // Dynamic data
+  const [allBusinesses, setAllBusinesses] = useState([]); // All fetched data
+  // const [businessData, setBusinessData] = useState(null); // Current business data
+  // const [reviews, setReviews] = useState([]);
+  // const [hours, setHours] = useState([]);
+  // const [authenticated, setAuthenticated] = useState(false); // To check if user is authenticated
+
+  // Fetch businesses on mount
+  useEffect(() => {
+      fetchBusinesses()
+          .then(data => {
+              setAllBusinesses(data);
+              setFilteredData(data); // Initially show all businesses
+          })
+          .catch(error => console.error("API error:", error));
+  }, []);
+
+  useEffect(() => {
+    if (filteredData.length > 0) {
+      const currentBusiness = filteredData.find(
+        (business) => business.business_name === businessName
+      );
+      if (currentBusiness) {
+        setBusinessData(currentBusiness);
+        fetchReviews(currentBusiness.business_id); // Fetch reviews for this business
+        fetchOperatingHours(currentBusiness.business_id); // Fetch operating hours
+      } else {
+        console.warn("Business not found:", businessName);
+      }
+    }
+  }, [filteredData, businessName]);
+
   const [reviews, setReviews] = useState([]);
   const [currentImage, setCurrentImage] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +118,7 @@ const BusinessPageComponent = () => {
 
   return (
     <div className="business-page">
-      <h1 className="business-name">{businessData.name}</h1>
+      <h1>{businessData.business_name}</h1>
       <p>{businessData.description}</p>
 
       {/* Image Gallery with Lightbox */}
