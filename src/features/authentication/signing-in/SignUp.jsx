@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './SignUp.css';
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
     const [username, setUsername] = useState('');
@@ -11,6 +12,7 @@ function SignUp() {
     const [message, setMessage] = useState('');
     const [passwordHintVisible, setPasswordHintVisible] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState('');
+    const navigate = useNavigate();
 
     const validatePassword = (password) => {
         let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -118,7 +120,9 @@ function SignUp() {
                 </div>
                 <button type="submit">Signup</button>
             </form>
-            {message && <p className="success">{message}</p>}
+            {/* alert shows up twice? */}
+            {message && alert(message)}
+            {message && navigate('/login')}
         </div>
     );
 }
