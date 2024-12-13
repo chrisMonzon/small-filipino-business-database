@@ -57,6 +57,27 @@ function Main() {
         setFilteredData(tempDatabase);
     }
 
+
+    const applyFilters = (filters) => {
+        let updatedData = [...allBusinesses];
+
+        // Filter by type
+        if (filters.type.length > 0) {
+            updatedData = updatedData.filter((business) =>
+                filters.type.includes(business.type)
+            );
+        }
+
+        // Filter by rating
+        if (filters.rating.length > 0) {
+            updatedData = updatedData.filter((business) =>
+                filters.rating.includes(Math.floor(business.rating))
+            );
+        }
+
+        setFilteredData(updatedData);
+    };
+
     return (
         <div>
             <SearchBarComponent onSendSearchQuery={printSearchQuery} />
@@ -66,7 +87,7 @@ function Main() {
                 </div>
             </div>
             <div className="container">
-                <Filter_Bar />
+                <Filter_Bar onFilterChange={applyFilters}/>
                 <div className="cards">
                     {parseDatabase(filteredData)}
                 </div>
