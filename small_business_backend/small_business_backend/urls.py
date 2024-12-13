@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("<h1>Welcome to Small Business Backend</h1> <p>To modify the database go to /admin</p>")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('business.urls')),
+    path('', home, name='home'),  # Root path
 ]
