@@ -3,52 +3,68 @@ import './Filter_Bar.css'
 function Filter_Bar() {    
       return (
         <div className='filter'>
+          <div className='margins'>
           <h1>Filter</h1>
           <h3>Business Type</h3>
-            <input type="checkbox"></input>
-            <label> Food/Drink </label>
-            <br></br>
+          <br></br>
 
+          <div className='types'>
+            <label > Food/Drink </label>
             <input type="checkbox"></input>
+          </div>
+
+          <div className='types'>
             <label> Clothing/Accessories </label>
-            <br></br>
-
             <input type="checkbox"></input>
+          </div>
+
+          <div className='types'>
             <label> Arts/Crafts/Decor </label>
-            <br></br>
-
             <input type="checkbox"></input>
+          </div>
+
+          <div className='types'>
             <label> ETC </label>
-            <br></br>
-
+            <input type="checkbox"></input>
+          </div>
           <h3>Rating</h3>
-            <input type="checkbox"></input>
-            <label> 5 Stars </label>
-            <br></br>
+            <div className='types'>
+              <label> 5 Stars </label>
+              <input type="checkbox"></input>
+            </div>
 
-            <input type="checkbox"></input>
-            <label> 4 Stars </label>
-            <br></br>
+            <div className='types'>
+              <label>4 Stars</label>
+              <input type="checkbox"></input>
+            </div>
 
-            <input type="checkbox"></input>
-            <label> 3 Stars </label>
-            <br></br>
+            <div className='types'>
+              <label>3 Stars</label>
+              <input type="checkbox"></input>
+            </div>
 
-            <input type="checkbox"></input>
-            <label> 2 Stars </label>
-            <br></br>
+            <div className='types'>
+              <label>2 Stars</label>
+              <input type="checkbox"></input>
+            </div>
 
-            <input type="checkbox"></input>
-            <label> 1 Stars </label>
-            <br></br>
+            <div className='types'>
+              <label> 1 Stars </label>  
+              <input type="checkbox"></input>
+            </div>
 
-            <input type="checkbox"></input>
+
+            <div className='types'>
+
             <label> 0 Stars </label>
-            <br></br>
+            <input type="checkbox"></input>
 
+            </div>
+            
             {/* Do this for more types */}
             {/* Clean up the filter bar */}
             {/* Add functionality with JavaScript */}
+            </div>
         </div>
       );
 }
