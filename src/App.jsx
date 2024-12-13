@@ -22,7 +22,7 @@ function App() {
         {/* Log in page */}
         <Route path="/login" element={<Login/>}/>
 
-        <Route path="/business" element={<BusinessPageComponent/>}/>
+        <Route path="/business/:businessName" element={<BusinessPageComponent/>}/>
 
         <Route path="/signup" element={<SignUp/>}/>
 
