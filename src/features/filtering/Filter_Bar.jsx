@@ -55,6 +55,13 @@ function Filter_Bar({onFilterChange}) {
                     onChange={() => handleCheckboxChange('type', 'ETC')}
                 />
             </div>
+            <div className='types'>
+                <label>Jewelry/Makeup</label>
+                <input
+                    type="checkbox"
+                    onChange={() => handleCheckboxChange('type', 'Jewelry/Makeup')}
+                />
+            </div>
             <h3>Rating</h3>
             <div className='types'>
                 <label>5 Stars</label>
