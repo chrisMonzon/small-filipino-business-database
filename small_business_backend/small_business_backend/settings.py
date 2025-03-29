@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'small_business_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/data/db.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
@@ -147,5 +147,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
     "https://small-filipino-business-database-production.up.railway.app",
-    "https://small-filipino-business-database.vercel.app",  # Optional, if making POST requests from frontend
+    # "https://small-filipino-business-database.vercel.app",  # Optional, if making POST requests from frontend
 ]

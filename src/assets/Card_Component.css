@@ -1,85 +1,108 @@
 .card {
     width: 30rem;
     height: 30rem;
-    margin: 1rem;
-    border-radius: 10px;
+    /* margin: 0.5rem; */
+    border-radius: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    background-color: #85aba8;
+    background-color: #c2ad7d;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, outline-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-business-name {
-    font-size: 3em;
-    font-family: Garamond, serif;
-    color: #ffffff;
-    margin: 5%;
+.card * {
+    text-decoration: none;
+    color: inherit;
 }
 
-.card-business-description, .card-business-rating {
-    font-family: Verdana, Tahoma, sans-serif;
-    font-size: 1.25em;
-    color: #ffffff;
-    margin: 5%;
-}
-
-.card-image {
-    max-width: 50%;
-    /* max-height: 50%; */
-    height: auto;
-}
-
-.card-settings-button {
-    background: none;
-    border: none;
-    cursor: pointer;
+.card {
+    width: 22rem;
+    height: 22rem;
+    margin: 0.5rem;
+    border-radius: 5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background-color: #ebd9b7; /* different background color */
+    
+    text-decoration: none;
+    color: inherit;
     display: flex;
     flex-direction: column;
-    float: right;
-    padding: 10;
   }
   
-  .card-settings-button-dot {
-    height: 8px;
-    width: 8px;
-    background-color: #333; /* Color of the dots */
-    border-radius: 50%;
-    margin: 2px 0; /* Space between dots */
+  .card-link {
+    text-decoration: none;
+    color: inherit;
   }
 
-  .card-settings-menu {
-    display:none;
+  
+  .card-top {
+    background-color: #daae47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
   }
-.card {
-    width: 30rem;
-    height: 30rem;
-    margin: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    background-color: #85aba8;
+  
+  .card-business-name-top {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Optima', 'Segoe UI', 'Candara', 'Calibri', 'Arial', sans-serif;
+    color: #201813;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  
+  .card-divider {
+    margin: 0;
+    border: none;
+    border-top: 2px solid #333;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+
+.card-business-name {
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Optima', 'Segoe UI', 'Candara', 'Calibri', 'Arial', sans-serif;
+    color: #201813;
+    margin: 5%;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top:2px;
+    text-decoration: none;
+}
+
+.card-business-description, 
+.card-business-rating {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.1em;
+    color: #201813;
+    /* margin: 5%; */
+    margin-left: 5px;
+    padding:15px;
+    margin-bottom:0px;
+    text-decoration: none;
 }
 
 .card:hover {
-    cursor: pointer;
-}
-
-.card-business-name {
-    font-size: 3em;
-    font-family: Garamond, serif;
-    color: #ffffff;
-    margin: 5%;
-}
-
-.card-business-description, .card-business-rating {
-    font-family: Verdana, Tahoma, sans-serif;
-    font-size: 1.25em;
-    color: #ffffff;
-    margin: 5%;
+    /* cursor: pointer; */
+    transform: scale(1.05); 
+    outline-color: #e0db79; 
+    box-shadow: 0 6px 12px rgba(255, 255, 0, 0.4); 
 }
 
 .card-image {
+    margin: 0 auto;
+    margin-top: -2px;
+    margin-left: 25px;
+    margin-bottom: -5px;
     max-width: 50%;
-    /* max-height: 50%; */
     height: auto;
 }
 

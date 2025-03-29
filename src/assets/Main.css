@@ -17,8 +17,22 @@
     flex: 3;              /* Makes the cards section wider than the filter bar */
     display: flex;
     flex-wrap: wrap;       /* Allows the cards to wrap to the next row if needed */
-    gap: 20px;             /* Adds spacing between individual cards */
+    gap: 10px;             /* Adds spacing between individual cards */
+    margin-left: 3rem;
+    margin-top: 20px;
 }
+
+.cards {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* <-- Center rows horizontally */
+    gap: 10px;
+    margin-top: 20px;
+    margin-left: auto;   /* <-- Optional: auto margins help with centering */
+    margin-right: auto;
+  }
+  
 
 .SortComponent{
     font-size: 0.15vw;

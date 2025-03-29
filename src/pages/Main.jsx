@@ -15,6 +15,7 @@ function Main() {
     useEffect(() => {
         fetchBusinesses()
             .then(data => {
+                console.log("Fetched businesses:", data);
                 setAllBusinesses(data);
                 setFilteredData(data); // Initially show all businesses
             })
@@ -98,12 +99,15 @@ function Main() {
 
 // Generate Cards from Fetched Data
 function parseDatabase(database) {
+    console.log("Filtered data:", database);
     return database.map(business => (
         <CardComponent
             key={business.business_id}
-            buisnessName={business.business_name}
+            businessName={business.business_name}
             rating={business.rating || "N/A"} // Assuming rating exists or provide fallback
             description={business.description}
+            website={business.website}
+            instagram={business.instagram}
         />
     ));
 }
