@@ -1,35 +1,46 @@
 .card {
-    width: 30rem;
-    height: 30rem;
-    /* margin: 0.5rem; */
-    border-radius: 5%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: #c2ad7d;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.3s ease, outline-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card * {
-    text-decoration: none;
-    color: inherit;
-}
-
-.card {
     width: 22rem;
-    height: 22rem;
+    height: 26rem;
     margin: 0.5rem;
     border-radius: 5%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    background-color: #ebd9b7; /* different background color */
+    background-color: #ffffff; /* different background color */
     
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, outline-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  @keyframes rotatePreview {
+    from {
+      transform: scaleX(1);
+    }
+    to {
+      transform: scaleX(0);
+    }
   }
   
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .rotating {
+    animation: rotatePreview 2s ease-in-out infinite alternate;
+    transform-style: preserve-3d;
+    perspective: 100px;
+  }
   .card-link {
     text-decoration: none;
     color: inherit;
@@ -37,20 +48,22 @@
 
   
   .card-top {
-    background-color: #daae47;
+    background-color: #cf293f;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
+    z-index: 2;
+    position: relative;
   }
   
   .card-business-name-top {
-    font-size: 1.5em;
+    font-size: 1.75em;
     font-weight: bold;
     font-family: 'Optima', 'Segoe UI', 'Candara', 'Calibri', 'Arial', sans-serif;
-    color: #201813;
+    color: #e9e9e9;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
     text-align: center;
   }
 
@@ -61,16 +74,17 @@
     border-top: 2px solid #333;
   }
   
-  .card-content {
+  /* .card-content {
     padding: 1rem;
   }
-  
+   */
 
 .card-business-name {
+    pointer-events: auto;
     font-size: 2em;
     font-weight: bold;
     font-family: 'Optima', 'Segoe UI', 'Candara', 'Calibri', 'Arial', sans-serif;
-    color: #201813;
+    color: #c4c4c4;
     margin: 5%;
     padding: 5px;
     margin-left: 10px;
@@ -78,11 +92,16 @@
     text-decoration: none;
 }
 
+.card-business-name-top:hover {
+    cursor: pointer;
+    color: #56b5e8;
+    text-decoration-line: underline;
+}
 .card-business-description, 
 .card-business-rating {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.1em;
-    color: #201813;
+    color: #000000;
     /* margin: 5%; */
     margin-left: 5px;
     padding:15px;
@@ -93,17 +112,26 @@
 .card:hover {
     /* cursor: pointer; */
     transform: scale(1.05); 
-    outline-color: #e0db79; 
-    box-shadow: 0 6px 12px rgba(255, 255, 0, 0.4); 
+    outline-color: #000000; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); 
+}
+
+.card-website-preview {
+    border: 1px solid #ccc;
+    padding: 0px;
+    border-radius: 8px;
+    /* min-width: 200px;
+    min-height: 200px; */
 }
 
 .card-image {
     margin: 0 auto;
-    margin-top: -2px;
-    margin-left: 25px;
+    margin-top: -5px;
+    margin-left: 15px;
     margin-bottom: -5px;
     max-width: 50%;
     height: auto;
+    filter: invert(1);
 }
 
 .card-settings-button {

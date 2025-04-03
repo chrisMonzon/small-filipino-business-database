@@ -177,7 +177,7 @@ function BusinessPageComponent () {
 
       
       {/* Operating Hours */}
-      <div className="operating-hours">
+      {/* <div className="operating-hours">
         <h3 className="operating-hours-title">Operating Hours</h3>
         {hours?.map((hour, index) => (
           <p
@@ -189,7 +189,7 @@ function BusinessPageComponent () {
             {hour.day}: {hour.open} - {hour.close}
           </p>
         ))}
-      </div>
+      </div> */}
 
       {/* Social Media Links */}
       <div className="social-media-links">
@@ -198,7 +198,7 @@ function BusinessPageComponent () {
       </div>
 
       {/* Reviews Section */}
-      <div className="reviews-section">
+      {/* <div className="reviews-section">
         <h3 className="reviews-section-title">Reviews</h3>
         {reviews?.map((review, index) => (
           <div key={index} className="review">
@@ -211,7 +211,7 @@ function BusinessPageComponent () {
         {authenticated && (
           <button>Leave a Review</button>
         )}
-      </div>
+      </div> */}
       
       {/* Similar Businesses */}
       <div className="similar-businesses">

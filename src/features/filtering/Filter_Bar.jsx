@@ -36,38 +36,17 @@ function Filter_Bar({onFilterChange}) {
                 />
             </div>
             <div className='types'>
-                <label>Clothing</label>
+                <label>Clothing/Accessories</label>
                 <input
                     type="checkbox"
                     onChange={() => handleCheckboxChange('type', 'Clothing/Accessories')}
                 />
             </div>
             <div className='types'>
-                <label>Accessories</label>
-                <input
-                    type="checkbox"
-                    onChange={() => handleCheckboxChange('type', 'Clothing/Accessories')}
-                />
-            </div>
-            <div className='types'>
-                <label>Arts/Crafts</label>
+                <label>Arts/Crafts/Decor</label>
                 <input
                     type="checkbox"
                     onChange={() => handleCheckboxChange('type', 'Arts/Crafts/Decor')}
-                />
-            </div>
-            <div className='types'>
-                <label>Decor</label>
-                <input
-                    type="checkbox"
-                    onChange={() => handleCheckboxChange('type', 'Arts/Crafts/Decor')}
-                />
-            </div>
-            <div className='types'>
-                <label>ETC</label>
-                <input
-                    type="checkbox"
-                    onChange={() => handleCheckboxChange('type', 'ETC')}
                 />
             </div>
             <div className='types'>
@@ -75,6 +54,13 @@ function Filter_Bar({onFilterChange}) {
                 <input
                     type="checkbox"
                     onChange={() => handleCheckboxChange('type', 'Jewelry/Makeup')}
+                />
+            </div>
+            <div className='types'>
+                <label>etc.</label>
+                <input
+                    type="checkbox"
+                    onChange={() => handleCheckboxChange('type', 'ETC')}
                 />
             </div>
             <br></br>

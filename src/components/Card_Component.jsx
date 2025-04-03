@@ -54,9 +54,9 @@ function WebsitePreview({ websiteURL }) {
       <div
         className="website-preview"
         style={{
-          border: "1px solid #ccc",
-          padding: "10px",
-          borderRadius: "8px",
+        //   border: "1px solid #ccc",
+        //   padding: "10px",
+        //   borderRadius: "20%",
           maxWidth: "300px"
         }}
       >
@@ -64,26 +64,90 @@ function WebsitePreview({ websiteURL }) {
           <img
             src={previewData.image.url}
             alt="Preview"
-            style={{ width: "100%", borderRadius: "4px", marginBottom: "10px" }}
+            style={{ width: "250px", height: "250px",borderRadius: "100%", marginBottom: "10px" }}
           />
         )}
-        <h3>{previewData.title || "No title available"}</h3>
-        <p>{previewData.description || "No description provided."}</p>
-        <a href={websiteURL} target="_blank" rel="noopener noreferrer">
+        {/* <h3>{previewData.title || "No title available"}</h3> */}
+        {/* <p>{previewData.description || "No description provided."}</p> */}
+        {/* <a href={websiteURL} target="_blank" rel="noopener noreferrer">
           Visit Site
-        </a>
+        </a> */}
       </div>
     );
   }
 
+  
 function WebsiteIsInvalid(businessName) {
     let invalid = [
         "Adeling", "Amber Agave", "Bongga Co.", "Filipinta", "HaribyArt", "Kilig Candles Co.",
         "Masiramon Chicago", "Pinny Planet", "Sage Rose Co.", "Unreleased Grounds", "Wounded Healing Art",
-        "YPArtistry"
+        "YPArtistry", "Carina\'s Cupcakery", "Fernwood Barbers", "Ampilfied Apparel", "Chorva Co."
     ]
     return invalid.includes(businessName)
 }
+
+function AddedIG(businessName) {
+    let valid = [
+        "Adeling", "Amber Agave", "Bongga Co.", "Carina\'s Cupcakery", 
+        "Filipinta", "Kilig Candles Co.","Masiramon Chicago", "Pinny Planet", 
+        "Sage Rose Co.", "Chorva Co.", "Wounded Healing Art", "YPArtistry",
+        "Ampilfied Apparel", "Tita Mia\'s", "FOR US, DEAR", "Morena Collective",
+        "Fernwood Barbers","Mutuc Clay Earrings", "Crochet Cama","Emma\'s Projects",
+        "Tita Bun Collective"
+        // "Andreen\'s Cookies", broken
+        // "Loren\'s Macarons", err
+    ]
+    return valid.includes(businessName)
+}
+
+function NoWebsiteOrIG(businessName) { 
+    let l = [
+        "Andreen\'s Cookies", "Loren\'s Macarons", "HaribyArt", "Unreleased Grounds"
+    ]
+    return l.includes(businessName)
+
+}
+
+function InstagramBlockquoteEmbed({url}) {
+    // Instagram's embed script only processes new blockquotes once when initially loaded
+    // When the card is re-rendered due to sorting or filtering, those blockquotes are in
+    // the DOM but Instagram doesn’t reprocess them.
+
+    // Allows cards to re-render Instagram embeds after sorting
+    useEffect(() => {
+        // Load Instagram embed script if not already loaded
+        if (!window.instgrm) {
+          const script = document.createElement("script");
+          script.src = "//www.instagram.com/embed.js";
+          script.async = true;
+          document.body.appendChild(script);
+        } else {
+          // Process the embed if the script is already loaded
+          window.instgrm.Embeds.process();
+        }
+    
+        // Also reprocess after a delay to make sure the DOM is ready
+        const timeout = setTimeout(() => {
+          if (window.instgrm?.Embeds?.process) {
+            window.instgrm.Embeds.process();
+          }
+        }, 500); // Delay can help when rendering dynamically
+    
+        return () => clearTimeout(timeout);
+      }, [url]);
+
+    const html = `
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/${url}/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; margin: 1px; max-width:540px; min-width:326px; padding:0; width:100%;">
+      <div style="padding:16px;">
+        <a href="https://www.instagram.com/${url}/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank" rel="noopener noreferrer">
+        Loading Instagram...
+        </a>
+      </div>
+      </blockquote>
+    `;
+  
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  }
 
 function CardComponent({ businessName, rating, description, website, instagram}) {
     const [menuVisible, setMenuVisible] = useState(false);
@@ -97,20 +161,17 @@ function CardComponent({ businessName, rating, description, website, instagram})
         
       };
 
-      function getStars(name) {
-        let hash = 0;
-        for (let i = 0; i < name.length; i++) {
-          hash = name.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        const normalized = Math.abs(hash) % 3; // 0 to 2
-        const stars = normalized + 3; // 3 to 5
-        return '★'.repeat(stars) + '☆'.repeat(5 - stars);
-      }
-
+    function getStars(name) {
+    let addOne = (name.length + 1) % 3; 
+    return '★'.repeat(5 - addOne) + '☆'.repeat(addOne);
+    }
+    // const cleanedInstagram = instagram.substring(1);
+    const cleanedInstagram = instagram?.toLowerCase().replace(/^@/, "").trim();
     return (
         // <Link to={`/business/${businessName}`}>
       <div className="card" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
         {/* Top section with different background */}
+        
         <div className="card-top">
         <img
             className="card-image"
@@ -128,135 +189,44 @@ function CardComponent({ businessName, rating, description, website, instagram})
   
         {/* Bottom section with business info */}
         <div className="card-content">
-          {/* <h1 className="card-business-name"><i>{businessName}</i></h1> */}
           {/* <p className="card-business-rating">Rating: {rating}</p> */}
           {/* <WebsitePreview websiteURL={website} /> */}
-          {/* {!website && (<WebsitePreview websiteURL={website} />)} */}
-          {/* {website && !WebsiteIsInvalid(businessName) && (
-        <div className="card-website-preview">
+          {NoWebsiteOrIG(businessName) && (<div className="rotating">
+          {(!website || WebsiteIsInvalid(businessName)) && (<WebsitePreview websiteURL={website} />)}
+          </div>)}
+
+          {instagram && AddedIG(businessName) && (
+            <div>
+                <InstagramBlockquoteEmbed url={`${cleanedInstagram}`}/>
+                <div class="loader"></div>
+            </div>
+            )}
+
+          {website && !WebsiteIsInvalid(businessName) && businessName != "Tita Bun Collective" && (
+
+
             <iframe 
             src={website}
             title={`${businessName} Preview`}
-            width="100%"
-            height="150"
-            style={{ border: "1px solid #ccc", borderRadius: "8px" }}
+            width="101%"
+            height="400px"
+            zIndex="0"
+            // transform="scale(0.1)"
             ></iframe>
-        </div>
-        )} */}
-        {/* {instagram && (
-        <WebsitePreview websiteURL={instagram} />
-        )} */}
-          <p className="card-business-rating">Rating: {getStars(businessName)}</p>
-          <p className="card-business-description">
-            {description?.substring(0, 250) + "... learn more"}
-          </p>
-          
+            )}
+
+          {/* <p className="card-business-rating">Rating: {getStars(businessName)}</p> */}
+          {/* {description.length >= 225 && <p className="card-business-description">
+            {description?.substring(0, 225) + "... learn more"}
+          </p>}
+          {description.length < 225 && <p className="card-business-description">
+            {description}
+          </p>}
+           */}
         </div>
       </div>
     //   </Link>
     );
   }
   
-// function CardComponent({ businessName, rating, description }) {
-//   const [menuVisible, setMenuVisible] = useState(false);
-
-//   return (
-//     // <Link to={`/business/${businessName}`}>
-//       <div className="card">
-//         {/* <img
-//           className="card-image"
-//           src="https://www.psauiuc.org/wp-content/uploads/2024/09/Logo-no-words-no-circle-300x300.png"
-//           alt="Philippine Student Association Logo"
-//         /> */}
-//         <img className="card-image" src="https://img.icons8.com/ios-filled/50/shop.png" alt="Shop Icon" width="50" height="50" />
-//         {/* Settings Button */}
-        
-        
-
-//         {/* Content */}
-//         <h1 className="card-business-name">{businessName}</h1>
-//         <p className="card-business-rating">Rating: {rating}</p>
-//         <p className="card-business-description">
-//           {description?.substring(0, 110)}...
-//         </p>
-//       </div>
-//     // </Link>
-//   );
-// }
-
 export default CardComponent;
-
-
-// import { Link } from "react-router-dom";
-// import "../assets/Card_Component.css";
-
-// function CardComponent( {buisnessName, rating, description} ) {
-//     return (
-//         <Link to={`/business/${buisnessName}`}>
-//         <button className="card" type="button" onclick="document.getElementById('card-settings-menu').style.display='block'">
-//             <div>
-//                 <img className='card-image' src="https://www.psauiuc.org/wp-content/uploads/2024/09/Logo-no-words-no-circle-300x300.png" alt="Philippine Student Association Logo" style={{width: '100%'}}/>
-//                 <button id="card-settings-button" class="card-settings-button" aria-label="Settings" type="button" onclick="document.getElementById('card-settings-menu').style.display='block'">
-//                     <span class="card-settings-button-dot"></span>
-//                     <span class="card-settings-button-dot"></span>
-//                     <span class="card-settings-button-dot"></span>
-//                 </button>
-//                 <div id="card-settings-menu" class="card-settings-menu">
-//                     <h3>Settings</h3>
-//                     <button id="close-button">Close</button>
-//                 </div>
-//                 <script>
-//                     {/* const card-settings-button = document.getElementById('card-settings-button');
-//                     const settingsmenu = document.getElementById('settings-menu');
-//                     const close-button = document.getElementById('close-button');
-
-//                     settings-button.addEventListener('click', () => {
-//                         settingsmenu.style.display = settings-menu.style.display === 'block' ? 'none' : 'block'
-//                     });
-
-//                     close-button.addEventListener('click', () => {
-//                         settingsmenu.style.display = 'none'
-//                     }); */}
-//                 </script>
-//                 <div>
-//                     <h1 className="card-business-name">
-//                         {buisnessName}
-//                     </h1>
-//                 </div>
-//                 <div>
-//                     <p className="card-business-rating">
-//                         Rating: {rating}
-//                     </p>
-//                 </div>
-//                 <div>
-//                     <p className="card-business-description">
-//                         {description.substring(0, 110)}...
-//                     </p>
-//                 </div>
-//             </div>
-//         </button>
-//         </Link>
-//     );
-// }
-
-// export default CardComponent;
-// <div className="card-settings-wrapper">
-//           <button
-//             className="card-settings-button"
-//             onClick={(e) => {
-//               e.preventDefault(); // prevent Link click
-//               setMenuVisible(!menuVisible);
-//             }}
-//           >
-//             {/* <span className="card-settings-button-dot"></span>
-//             <span className="card-settings-button-dot"></span>
-//             <span className="card-settings-button-dot"></span> */}
-//           </button>
-// 
-//           {menuVisible && (
-//             <div className="card-settings-menu">
-//               <h3>Settings</h3>
-//               <button onClick={() => setMenuVisible(false)}>Close</button>
-//             </div>
-//           )}
-//         </div>

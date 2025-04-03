@@ -38,7 +38,7 @@
 
 /* Body background color */
 body {
-    background-color: #26160b;
+    background-color: #fff3d6;
 }
 
 /* Header styling */
@@ -75,8 +75,8 @@ body {
     /* Logo-like styling */
     letter-spacing: 2px;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
-    background: linear-gradient(to right, #f45252, hsl(219, 47%, 60%));
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.0);
+    background: linear-gradient(to right, #cf293f, #cf293f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

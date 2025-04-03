@@ -23,11 +23,11 @@ function Header() {
                 {/* <img className='header_image' src="https://www.psauiuc.org/wp-content/uploads/2024/09/Logo-no-words-no-circle-300x300.png" alt="Philippine Student Association Logo"/> */}
             </Link>
                 <h1 className="site_name">
-                    <i>FilDB</i>
+                    <i>JolliBuy</i>
                 </h1>
-            <Link to="/login">
+            {/* <Link to="/login">
                 <button className="logInButton"> </button>
-            </Link>
+            </Link> */}
                 
             </div>
         </header>

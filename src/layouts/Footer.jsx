@@ -2,7 +2,7 @@ import './Footer.css';
 function Footer() {
     return(
         <footer>
-            <p className="footer">© 2024 Small Business Database</p>
+            <p className="footer">© 2024 PSA Tech Team</p>
         </footer>
     );
 }

@@ -53,6 +53,10 @@ function Main() {
     // Handle Search Query
     function printSearchQuery(query) {
         console.log("Query: ", query);
+        if (query.trim() === "") {
+            setFilteredData([...allBusinesses]);
+            return;
+        }
         let tempDatabase = allBusinesses.slice();
         tempDatabase.sort((a, b) => compareBuisnessesFromQuery(query, a, b));
         setFilteredData(tempDatabase);
@@ -113,8 +117,10 @@ function parseDatabase(database) {
 }
 
 function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) {
-    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.buissness_name);
-    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.buisness_name);
+    let n1 = firstBuisness.business_name
+    let n2 = secondBuisness.business_name
+    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, n1.toLowerCase());
+    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, n2.toLowerCase());
 
     if (firstTitleFrequency > secondTitleFrequency) {
         return -1;
