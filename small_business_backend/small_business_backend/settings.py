@@ -33,7 +33,7 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'small-filipino-business-database-production.up.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'small-filipino-business-database-production.up.railway.app', 'jollibuy.vercel.app']
 
 
 # Application definition
@@ -69,7 +69,7 @@ MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # React Frontend URL
     "https://small-filipino-business-database.vercel.app",
-    "jollibuy.vercel.app",
+    "https://jollibuy.vercel.app",
 # Vercel Frontend URL
 ]
 
