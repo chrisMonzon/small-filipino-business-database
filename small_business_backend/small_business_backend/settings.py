@@ -66,15 +66,17 @@ MIDDLEWARE = [
 # MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000", # React Frontend URL
-#     "https://small-filipino-business-database.vercel.app",
-#     "https://jollibuy.vercel.app",
-#     "https://small-filipino-business-database-kcfdvxedq.vercel.app",
-# # Vercel Frontend URL
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", # React Frontend URL
+    "https://small-filipino-business-database.vercel.app",
+    "https://jollibuy.vercel.app",
+    "https://small-filipino-business-database-kcfdvxedq.vercel.app",
+# Vercel Frontend URL
+]
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'small_business_backend.urls'
 
@@ -144,6 +146,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
