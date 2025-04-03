@@ -70,6 +70,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # React Frontend URL
     "https://small-filipino-business-database.vercel.app",
     "https://jollibuy.vercel.app",
+    "https://small-filipino-business-database-kcfdvxedq.vercel.app",
 # Vercel Frontend URL
 ]
 
@@ -151,4 +152,5 @@ CSRF_TRUSTED_ORIGINS = [
     "https://small-filipino-business-database-production.up.railway.app",
     # "https://small-filipino-business-database.vercel.app",  # Optional, if making POST requests from frontend
     "https://jollibuy.vercel.app",
+    "https://small-filipino-business-database-kcfdvxedq.vercel.app"
 ]
