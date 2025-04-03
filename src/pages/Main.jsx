@@ -5,6 +5,7 @@ import SortComponent from "../features/sorting/SortComponent";
 import CardComponent from "../components/Card_Component";
 import { fetchBusinesses } from "../lib/business";
 import "../assets/Main.css";
+import Header from "../layouts/Header"; 
 import KMPSearch from "../util/KMPSearch"
 
 function Main() {
@@ -85,12 +86,14 @@ function Main() {
 
     return (
         <div>
-            <SearchBarComponent onSendSearchQuery={printSearchQuery} />
-            <div className="columnContainer">
+            {/* <SearchBarComponent onSendSearchQuery={printSearchQuery} /> */}
+            {/* <div className="columnContainer">
                 <div className="container">
                     <SortComponent onSortChange={handleSortChange}/>
                 </div>
-            </div>
+            </div> */}
+            <Header onSendSearchQuery={printSearchQuery} />
+            <br></br>
             <div className="container">
                 <Filter_Bar onFilterChange={applyFilters}/>
                 <div className="cards">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../assets/Card_Component.css";
+// import lorenIcon from "/loren_icon.jpg"; 
 
 import axios from "axios";
 
@@ -49,7 +50,21 @@ function WebsitePreview({ websiteURL }) {
     }
   
     if (!previewData) return <p>Loading preview...</p>;
-  
+    if (websiteURL == "https://instagram.com/lorens._.macarons") {
+        return (
+            <div
+              className="website-preview"
+              style={{
+              }}
+            >
+                <img
+                  src="https://drive.google.com/file/d/1qUY0iixXAeHNqbr0zSlxncufxfb40DIg/view?usp=sharing"
+                  alt="Preview"
+                  style={{ width: "300px", height: "300px",borderRadius: "100%", marginBottom: "10px" }}
+                />
+            </div>
+          );
+    }
     return (
       <div
         className="website-preview"
@@ -57,21 +72,16 @@ function WebsitePreview({ websiteURL }) {
         //   border: "1px solid #ccc",
         //   padding: "10px",
         //   borderRadius: "20%",
-          maxWidth: "300px"
+        //   maxWidth: "300px"
         }}
       >
         {previewData.image?.url && (
           <img
             src={previewData.image.url}
             alt="Preview"
-            style={{ width: "250px", height: "250px",borderRadius: "100%", marginBottom: "10px" }}
+            style={{ width: "300px", height: "300px",borderRadius: "100%", marginBottom: "10px" }}
           />
         )}
-        {/* <h3>{previewData.title || "No title available"}</h3> */}
-        {/* <p>{previewData.description || "No description provided."}</p> */}
-        {/* <a href={websiteURL} target="_blank" rel="noopener noreferrer">
-          Visit Site
-        </a> */}
       </div>
     );
   }
@@ -85,6 +95,8 @@ function WebsiteIsInvalid(businessName) {
     ]
     return invalid.includes(businessName)
 }
+
+export {WebsiteIsInvalid};
 
 function AddedIG(businessName) {
     let valid = [
@@ -100,15 +112,17 @@ function AddedIG(businessName) {
     return valid.includes(businessName)
 }
 
+export {AddedIG};
+
 function NoWebsiteOrIG(businessName) { 
     let l = [
-        "Andreen\'s Cookies", "Loren\'s Macarons", "HaribyArt", "Unreleased Grounds"
+        "Andreen\'s Cookies", "HaribyArt", "Unreleased Grounds"
     ]
     return l.includes(businessName)
 
 }
 
-function InstagramBlockquoteEmbed({url}) {
+function InstagramBlockquoteEmbed({url, width, height}) {
     // Instagram's embed script only processes new blockquotes once when initially loaded
     // When the card is re-rendered due to sorting or filtering, those blockquotes are in
     // the DOM but Instagram doesn’t reprocess them.
@@ -137,7 +151,7 @@ function InstagramBlockquoteEmbed({url}) {
       }, [url]);
 
     const html = `
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/${url}/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; margin: 1px; max-width:540px; min-width:326px; padding:0; width:100%;">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/${url}/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; margin: 1px; max-height:${height}px; max-width:${width}px; min-width:326px; padding:0; width:100%;">
       <div style="padding:16px;">
         <a href="https://www.instagram.com/${url}/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank" rel="noopener noreferrer">
         Loading Instagram...
@@ -149,8 +163,11 @@ function InstagramBlockquoteEmbed({url}) {
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
   }
 
+export {InstagramBlockquoteEmbed};
+
 function CardComponent({ businessName, rating, description, website, instagram}) {
     const [menuVisible, setMenuVisible] = useState(false);
+    
     const navigate = useNavigate();
     const handleCardClick = () => {
         if (businessName[0] == "8") {
@@ -169,6 +186,7 @@ function CardComponent({ businessName, rating, description, website, instagram})
     const cleanedInstagram = instagram?.toLowerCase().replace(/^@/, "").trim();
     return (
         // <Link to={`/business/${businessName}`}>
+    <div className="card-wrapper">
       <div className="card" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
         {/* Top section with different background */}
         
@@ -191,40 +209,100 @@ function CardComponent({ businessName, rating, description, website, instagram})
         <div className="card-content">
           {/* <p className="card-business-rating">Rating: {rating}</p> */}
           {/* <WebsitePreview websiteURL={website} /> */}
-          {NoWebsiteOrIG(businessName) && (<div className="rotating">
-          {(!website || WebsiteIsInvalid(businessName)) && (<WebsitePreview websiteURL={website} />)}
-          </div>)}
-
-          {instagram && AddedIG(businessName) && (
-            <div>
-                <InstagramBlockquoteEmbed url={`${cleanedInstagram}`}/>
-                <div class="loader"></div>
+          {NoWebsiteOrIG(businessName) && (
+            <div className="rotating">
+                {(!website || WebsiteIsInvalid(businessName)) && (
+                <div className="center-preview">
+                    <WebsitePreview websiteURL={website} />
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/><br/><br/><br/><br/>
+                </div>
+                )}
             </div>
             )}
 
-          {website && !WebsiteIsInvalid(businessName) && businessName != "Tita Bun Collective" && (
-
-
+        {instagram && AddedIG(businessName) && businessName != "Loren\'s Macarons" && (
+            <div>
+                <InstagramBlockquoteEmbed 
+                url={cleanedInstagram} 
+                width={540} 
+                height={440} 
+                />
+                {/* <div class="loader"></div> */}
+            </div>
+        )}
+        {/* {businessName == "Loren\'s Macarons" && (
+            <div className="rotating">
+            <div className="center-preview">
+            <iframe src="https://drive.google.com/file/d/1qUY0iixXAeHNqbr0zSlxncufxfb40DIg/preview" width="325" height="325" >
+            </iframe>  
+            </div>
+            <br></br><br></br><br></br><br></br><br></br>
+            </div>)
+            } */}
+        
+        {businessName == "Loren\'s Macarons" && (
+            <div className="iframe-container">
             <iframe 
             src={website}
             title={`${businessName} Preview`}
             width="101%"
-            height="400px"
+            height="460px"
+            zIndex="0"
+            className="cropped-iframe"
+            // transform="scale(0.1)"
+            ></iframe>
+            </div>
+        )}
+
+        {businessName == "Andreen\'s Cookies" && (
+            <div className="center-preview" style={{marginTop:"-350px"}}>
+                <iframe src="https://drive.google.com/file/d/1fyBuYELVRvDgUPbHDj459l0eFEk2aSj-/preview" width="450" height="450"></iframe>
+            </div>
+        )}
+
+
+
+          
+          {website && !WebsiteIsInvalid(businessName) && businessName != "Tita Bun Collective" && (
+            <iframe 
+            src={website}
+            title={`${businessName} Preview`}
+            width="101%"
+            height="460px"
             zIndex="0"
             // transform="scale(0.1)"
             ></iframe>
-            )}
+        )}
 
-          {/* <p className="card-business-rating">Rating: {getStars(businessName)}</p> */}
-          {/* {description.length >= 225 && <p className="card-business-description">
-            {description?.substring(0, 225) + "... learn more"}
-          </p>}
-          {description.length < 225 && <p className="card-business-description">
-            {description}
-          </p>}
-           */}
+
+          
         </div>
+        {description.length >= 250 && (
+            <div  className="card-about-wrapper">
+            <b className="card-business-description" style={{ fontSize: "23px" }}>About:</b>
+            <p className="card-business-description">
+                {description?.substring(0, 250) + "... learn more"}
+            </p>
+            <div className="card-about">
+                <button>Visit page</button>
+            </div>
+          </div>)}
+          {description.length < 250 && 
+          (<div className="card-about-wrapper">
+            <b className="card-business-description" style={{ fontSize: "23px" }}>About:</b>
+            <p className="card-business-description">
+                {description}
+            </p>
+            <div className="card-about">
+                <button type="button">Visit page</button>
+            </div>
+          </div>)
+          }
+        </div>
+        
       </div>
+      
     //   </Link>
     );
   }

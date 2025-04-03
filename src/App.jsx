@@ -14,7 +14,7 @@ function App() {
     <div className="background">
       {/* Header always shown */}
       <Header />
-
+      <br></br><br></br>
       <Routes>
         {/* Home page */}
         <Route path="/" element={<Main/>} />
@@ -29,6 +29,7 @@ function App() {
       </Routes>
       
       {/* Footer always shown */}
+      <br></br>
       <Footer/>
     </div>
     </Router>

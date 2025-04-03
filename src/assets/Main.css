@@ -10,16 +10,7 @@
 
 .Filter_Bar {
     flex: 1;              /* Adjust this to control the width */
-    margin-right:20px;    /* Add spacing between the Filter_Bar and cards */
-}
-
-.cards {
-    flex: 3;              /* Makes the cards section wider than the filter bar */
-    display: flex;
-    flex-wrap: wrap;       /* Allows the cards to wrap to the next row if needed */
-    gap: 10px;             /* Adds spacing between individual cards */
-    margin-left: 3rem;
-    margin-top: 20px;
+    /* margin-right:20px;   */
 }
 
 .cards {
@@ -29,8 +20,8 @@
     justify-content: center;  /* <-- Center rows horizontally */
     gap: 10px;
     margin-top: 20px;
-    margin-left: auto;   /* <-- Optional: auto margins help with centering */
-    margin-right: auto;
+    margin-left: 12em;  
+    /* margin-right: 1em; */
   }
   
 

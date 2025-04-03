@@ -11,8 +11,9 @@
     padding-left: 15px;
     height: 50px;
     width: 550px;
+    max-width: 1000px;
     border: 5px solid;
     border-radius: 25px;
-    border-color: rgb(61, 55, 46);
+    border-color: #38140d;
     background-color: #ede4c4;
 }
