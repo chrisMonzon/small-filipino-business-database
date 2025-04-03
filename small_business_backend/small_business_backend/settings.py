@@ -150,5 +150,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
     "https://small-filipino-business-database-production.up.railway.app",
     # "https://small-filipino-business-database.vercel.app",  # Optional, if making POST requests from frontend
-    ""https://jollibuy.vercel.app",
+    "https://jollibuy.vercel.app",
 ]
