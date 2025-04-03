@@ -1,106 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+.card-outer {
+  overflow: visible;
+}
+
+.card-wrapper {
+  /* transform: translateX(100px); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 23rem;
+  margin: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-wrapper:hover {
+  transform: scale(1.05);
+  /* translateX(100px)  */
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); */
+}
+
 .card {
-    width: 30rem;
-    height: 30rem;
-    margin: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    background-color: #85aba8;
-}
-
-.card-business-name {
-    font-size: 3em;
-    font-family: Garamond, serif;
-    color: #ffffff;
-    margin: 5%;
-}
-
-.card-business-description, .card-business-rating {
-    font-family: Verdana, Tahoma, sans-serif;
-    font-size: 1.25em;
-    color: #ffffff;
-    margin: 5%;
-}
-
-.card-image {
-    max-width: 50%;
-    /* max-height: 50%; */
-    height: auto;
-}
-
-.card-settings-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    float: right;
-    padding: 10;
-  }
-  
-  .card-settings-button-dot {
-    height: 8px;
-    width: 8px;
-    background-color: #333; /* Color of the dots */
-    border-radius: 50%;
-    margin: 2px 0; /* Space between dots */
-  }
-
-  .card-settings-menu {
-    display:none;
-  }
-.card {
-    width: 30rem;
-    height: 30rem;
-    margin: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    background-color: #85aba8;
+  width: 100%;
+  height: 26rem;
+  border-radius: 5%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: height 0.3s ease;
 }
 
 .card:hover {
-    cursor: pointer;
+  height: 47rem;
 }
 
-.card-business-name {
-    font-size: 3em;
-    font-family: Garamond, serif;
-    color: #ffffff;
-    margin: 5%;
+.card-top {
+  background-color: #cf293f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
 }
 
-.card-business-description, .card-business-rating {
-    font-family: Verdana, Tahoma, sans-serif;
-    font-size: 1.25em;
-    color: #ffffff;
-    margin: 5%;
+.card-business-name-top {
+  font-size: 1.75em;
+  font-weight: bold;
+  font-family: 'Optima', 'Segoe UI', 'Candara', 'Calibri', 'Arial', sans-serif;
+  color: #e9e9e9;
+  margin-left: 10px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.card-business-name-top:hover {
+  cursor: pointer;
+  color: #56b5e8;
+  text-decoration-line: underline;
+}
+
+.card-divider {
+  margin: 0;
+  border: none;
+  border-top: 2px solid #333;
+}
+
+.card-about {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.card-about button {
+  border-radius: 40%;
+  width: 8rem;
+  height: 60px;
+  background-color: #FFD700;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Outfit', sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  line-height: 1;
+  padding-top: 5px;
+}
+
+.card-business-description,
+.card-business-rating {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9em;
+  color: #000000;
+  margin-left: 5px;
+  padding: 15px;
+  margin-bottom: 0px;
+  text-decoration: none;
 }
 
 .card-image {
-    max-width: 50%;
-    /* max-height: 50%; */
-    height: auto;
+  margin: 0 auto;
+  margin-top: -5px;
+  margin-left: 15px;
+  margin-bottom: -5px;
+  max-width: 50%;
+  height: auto;
+  filter: invert(1);
 }
 
-.card-settings-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    float: right;
-    padding: 10;
-  }
-  
-.card-settings-button-dot {
-    height: 8px;
-    width: 8px;
-    background-color: #333; /* Color of the dots */
-    border-radius: 50%;
-    margin: 2px 0; /* Space between dots */
+button {
+  background-color: #FFD700;
+  border: none;
+  color: #333;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.card-settings-menu {
-    display:none;
+/* Loader & Animations */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotatePreview {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+.rotating {
+  animation: rotatePreview 2s ease-in-out infinite alternate;
+  transform-style: preserve-3d;
+  perspective: 100px;
+}
+
+.center-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.iframe-container {
+  width: 100%;             /* or set a fixed width like 600px */
+  height: 460px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cropped-iframe {
+  width: 1200px;            /* larger than container */
+  height: 800px;            /* larger if needed */
+  border: none;
+  position: absolute;
+  top: -50px;               /* optional vertical shift */
+  left: -420px;             /* shift to the right by moving left */
+}
+
+.recentered-iframe {
+  transform: scale(1.1) translateX(-100px);  /* Zoom in and shift left */
+  transform-origin: top left;
+  width: 100%;
+  height: 460px;
+  border: none;
 }

@@ -19,7 +19,7 @@ function SearchBarComponent({ onSendSearchQuery }) {
     return(
         <div className="searchbar">
             <span class="search-icon material-symbols-outlined"></span>
-            <input class="search-input" type="search" placeholder="Search Business"/>
+            <input class="search-input" type="search" placeholder="🔍 Find a small business to support!"/>
         </div>
     );   
 }

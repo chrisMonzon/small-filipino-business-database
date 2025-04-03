@@ -5,6 +5,7 @@ import SortComponent from "../features/sorting/SortComponent";
 import CardComponent from "../components/Card_Component";
 import { fetchBusinesses } from "../lib/business";
 import "../assets/Main.css";
+import Header from "../layouts/Header"; 
 import KMPSearch from "../util/KMPSearch"
 
 function Main() {
@@ -15,6 +16,7 @@ function Main() {
     useEffect(() => {
         fetchBusinesses()
             .then(data => {
+                console.log("Fetched businesses:", data);
                 setAllBusinesses(data);
                 setFilteredData(data); // Initially show all businesses
             })
@@ -52,6 +54,10 @@ function Main() {
     // Handle Search Query
     function printSearchQuery(query) {
         console.log("Query: ", query);
+        if (query.trim() === "") {
+            setFilteredData([...allBusinesses]);
+            return;
+        }
         let tempDatabase = allBusinesses.slice();
         tempDatabase.sort((a, b) => compareBuisnessesFromQuery(query, a, b));
         setFilteredData(tempDatabase);
@@ -80,12 +86,14 @@ function Main() {
 
     return (
         <div>
-            <SearchBarComponent onSendSearchQuery={printSearchQuery} />
-            <div className="columnContainer">
+            {/* <SearchBarComponent onSendSearchQuery={printSearchQuery} /> */}
+            {/* <div className="columnContainer">
                 <div className="container">
                     <SortComponent onSortChange={handleSortChange}/>
                 </div>
-            </div>
+            </div> */}
+            <Header onSendSearchQuery={printSearchQuery} />
+            <br></br>
             <div className="container">
                 <Filter_Bar onFilterChange={applyFilters}/>
                 <div className="cards">
@@ -98,19 +106,24 @@ function Main() {
 
 // Generate Cards from Fetched Data
 function parseDatabase(database) {
+    console.log("Filtered data:", database);
     return database.map(business => (
         <CardComponent
             key={business.business_id}
-            buisnessName={business.business_name}
+            businessName={business.business_name}
             rating={business.rating || "N/A"} // Assuming rating exists or provide fallback
             description={business.description}
+            website={business.website}
+            instagram={business.instagram}
         />
     ));
 }
 
 function compareBuisnessesFromQuery(searchQuery, firstBuisness, secondBuisness) {
-    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, firstBuisness.buissness_name);
-    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, secondBuisness.buisness_name);
+    let n1 = firstBuisness.business_name
+    let n2 = secondBuisness.business_name
+    let firstTitleFrequency = KMPSearch.kmpSearch(searchQuery, n1.toLowerCase());
+    let secondTitleFrequency = KMPSearch.kmpSearch(searchQuery, n2.toLowerCase());
 
     if (firstTitleFrequency > secondTitleFrequency) {
         return -1;

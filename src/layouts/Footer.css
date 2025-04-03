@@ -1,4 +1,10 @@
 .footer {
+    /* transform: translateX(100px); */
+    color: black;
+    /* position: absolute; */
+    bottom: 0;
     text-align: center;
-    color: white;
+    /* left: 0;
+    right: 0;
+    margin: auto; */
 }

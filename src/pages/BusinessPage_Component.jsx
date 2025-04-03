@@ -3,6 +3,7 @@ import "../assets/BusinessPage_Component.css";
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { fetchBusinesses } from "../lib/business";
+import { AddedIG, WebsiteIsInvalid, InstagramBlockquoteEmbed} from "../components/Card_Component.jsx"
 
 function BusinessPageComponent () {
 
@@ -113,10 +114,15 @@ function BusinessPageComponent () {
     const [closeHour] = todayHours.close.split(':').map(Number);
     return currentHour >= openHour && currentHour <= closeHour;
   };
-
+  // const cleanedInstagram = businessData.instagram?.toLowerCase().replace(/^@/, "").trim();
   return (
+    <table>
+      <tr>
+      <th>
     <div className="business-page">
+      <br></br><br></br>
       <h1>{businessData.business_name}</h1>
+      <br></br>
       <p>{businessData.description}</p>
 
       {/* Image Gallery with Lightbox */}
@@ -159,69 +165,53 @@ function BusinessPageComponent () {
                 Instagram
             </button>
         )}
-
-        {/* Call Button (Uncomment if needed) */}
-        {/* {businessData.contact?.phone && (
-            <button onClick={() => window.location.href = `tel:${businessData.contact.phone}`}>
-                Call
-            </button>
-        )} */}
-
-        {/* Message Button (Uncomment if needed) */}
-        {/* {businessData.contact?.phone && (
-            <button onClick={() => window.location.href = `sms:${businessData.contact.phone}`}>
-                Message
-            </button>
-        )} */}
     </div>
-
-      
-      {/* Operating Hours */}
-      <div className="operating-hours">
-        <h3 className="operating-hours-title">Operating Hours</h3>
-        {hours?.map((hour, index) => (
-          <p
-            key={index}
-            style={{
-              color: hour.day === new Date().toLocaleString('en-us', { weekday: 'short' }) && isOpenNow() ? 'green' : 'black',
-            }}
-          >
-            {hour.day}: {hour.open} - {hour.close}
-          </p>
-        ))}
-      </div>
 
       {/* Social Media Links */}
       <div className="social-media-links">
         {/* <a href={businessData.socialLinks.facebook} target="_blank" rel="noopener noreferrer">Facebook</a> */}
         {/* <a href={businessData.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> */}
       </div>
-
-      {/* Reviews Section */}
-      <div className="reviews-section">
-        <h3 className="reviews-section-title">Reviews</h3>
-        {reviews?.map((review, index) => (
-          <div key={index} className="review">
-            <h4 className="review-title">{review.title}</h4>
-            <p><strong>{review.profile}</strong> - {review.date}</p>
-            <p>Rating: {review.rating} stars</p>
-            <p>{review.description}</p>
-          </div>
-        ))}
-        {authenticated && (
-          <button>Leave a Review</button>
-        )}
-      </div>
       
       {/* Similar Businesses */}
-      <div className="similar-businesses">
-        <h3 className="similar-businesses-title">Similar Businesses</h3>
+      {/* <div className="similar-businesses"> */}
+        {/* <h3 className="similar-businesses-title">Similar Businesses</h3> */}
         {/* Placeholder for similar business data */}
-        <div>Business 1</div>
+        {/* <div>Business 1</div>
         <div>Business 2</div>
-        <div>Business 3</div>
-      </div>
+        <div>Business 3</div> */}
+      {/* </div> */}
     </div>
+    </th>
+    <th>
+    {businessData.instagram && AddedIG(businessName) && (
+      <div style={{ transform: 'scale(1.5) translateY(40px)', transformOrigin: 'top left', marginRight: '15em' }}>
+        <InstagramBlockquoteEmbed 
+          url={`${businessData.instagram.toLowerCase().replace(/^@/, "").trim()}`} 
+          width={800}
+          height={800}
+        />
+      </div>
+    )}
+
+
+        {businessData.website && !WebsiteIsInvalid(businessName) && businessName != "Tita Bun Collective" && (
+            <div className="halfPreview" style={{ transform: 'translateY(20px)'}}>
+            <iframe 
+            src={businessData.website}
+            title={`${businessData.business_name} Preview`}
+            width="101%"
+            height="300px"
+            zIndex="0"
+            // transform="scale(0.1)"
+            ></iframe>
+            </div>
+        )}
+    </th>
+    </tr>
+    <br></br>
+    </table>
+    
   );
 };
 

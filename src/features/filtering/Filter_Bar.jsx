@@ -24,7 +24,8 @@ function Filter_Bar({onFilterChange}) {
   return (
     <div className='filter'>
         <div className='margins'>
-            <h1>Filter</h1>
+            <h1 style={{ marginTop: '-5px' }}>Filter</h1>
+            <br></br>
             <h3>Business Type</h3>
             <br />
             <div className='types'>
@@ -49,19 +50,20 @@ function Filter_Bar({onFilterChange}) {
                 />
             </div>
             <div className='types'>
-                <label>ETC</label>
-                <input
-                    type="checkbox"
-                    onChange={() => handleCheckboxChange('type', 'ETC')}
-                />
-            </div>
-            <div className='types'>
                 <label>Jewelry/Makeup</label>
                 <input
                     type="checkbox"
                     onChange={() => handleCheckboxChange('type', 'Jewelry/Makeup')}
                 />
             </div>
+            <div className='types'>
+                <label>etc.</label>
+                <input
+                    type="checkbox"
+                    onChange={() => handleCheckboxChange('type', 'ETC')}
+                />
+            </div>
+            <br></br>
             <h3>Rating</h3>
             <div className='types'>
                 <label>5 Stars</label>
@@ -96,13 +98,6 @@ function Filter_Bar({onFilterChange}) {
                 <input
                     type="checkbox"
                     onChange={() => handleCheckboxChange('rating', 1)}
-                />
-            </div>
-            <div className='types'>
-                <label>0 Stars</label>
-                <input
-                    type="checkbox"
-                    onChange={() => handleCheckboxChange('rating', 0)}
                 />
             </div>
         </div>
