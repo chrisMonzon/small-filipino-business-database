@@ -68,7 +68,9 @@ MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # React Frontend URL
-    "https://small-filipino-business-database.vercel.app", # Vercel Frontend URL
+    "https://small-filipino-business-database.vercel.app",
+    "jollibuy.vercel.app",
+# Vercel Frontend URL
 ]
 
 ROOT_URLCONF = 'small_business_backend.urls'
