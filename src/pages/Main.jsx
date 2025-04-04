@@ -16,7 +16,7 @@ function Main() {
     // "Fetch" businesses on mount by loading the local JSON
     useEffect(() => {
         // Here we're directly using the imported JSON data.
-        console.log("HAIIIII Loaded businesses from JSON:", businessesData);
+        console.log("Loaded businesses from JSON:", businessesData);
         setAllBusinesses(businessesData);
         setFilteredData(businessesData); // Initially show all businesses
     }, []);
